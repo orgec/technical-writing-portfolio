@@ -16,7 +16,7 @@ technical-writing-portfolio/
 └── README.md
 ```
 
-Each file serves a distinct purpose and a distinct audience. Before adding content, confirm it belongs in the intended file — avoid duplicating information across documents.
+Each file serves a distinct purpose and a distinct audience. Before adding content, confirm it belongs in the intended file, this will avoid duplicating information across documents.
 
 ---
 
