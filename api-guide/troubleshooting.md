@@ -3,7 +3,6 @@
 This guide helps diagnose and resolve common issues when using the Scan API.
 
 ---
-
 ## Authentication Errors (401)
 
 ### Problem
