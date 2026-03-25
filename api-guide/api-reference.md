@@ -153,6 +153,7 @@ The API version is included in the URL:
 Future versions may introduce breaking changes.
 
 ---
+This document provides a structured reference for all Scan API endpoints, including request formats, parameters, and response structures. It is intended for developers who need precise and complete technical details.
 
 ## Notes
 
