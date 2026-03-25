@@ -1,6 +1,6 @@
 # Integration Guide
 
-This guide explains how to integrate the Scan API into your workflow.
+This guide explains how to integrate the Scan API into real-world workflows, including backend services and automation pipelines. It focuses on practical usage patterns and system-level considerations.
 
 ---
 
