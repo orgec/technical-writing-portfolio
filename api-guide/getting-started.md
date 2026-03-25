@@ -11,4 +11,4 @@ Requests must include an API key in the `Authorization` header.
 ### Example
 ```bash
 Authorization: Bearer YOUR_API_KEY
-```md
+
