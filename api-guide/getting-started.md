@@ -3,7 +3,7 @@
 ## Overview
 The Scan API allows users to trigger automated scans against a target environment and retrieve scan status programmatically.
 
-This guide explains how to authenticate, submit a scan request, and interpret the response.
+This guide helps developers quickly authenticate and launch their first scan with minimal setup. It focuses on the shortest path from initial access to a successful API request.
 
 ## Authentication
 Requests must include an API key in the `Authorization` header.
