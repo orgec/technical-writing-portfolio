@@ -1,4 +1,4 @@
-# Technical Writing Portfolio – Orge Castellano
+# Technical Writing Portfolio 
 
 This portfolio demonstrates how complex security workflows—such as API-driven scanning, asynchronous jobs, and error handling—can be translated into clear, developer-focused documentation.
 
@@ -26,3 +26,10 @@ I focus on:
 - developer-oriented writing
 - troubleshooting and debugging mindset
 - documentation designed as a scalable system rather than isolated pages
+
+---
+## NOTE ON SAMPLES: 
+
+The documentation in this portfolio is based on a fictional security scanning API. Work produced for previous clients is subject to NDAs and data protection obligations and cannot be shared publicly. These samples are purpose-built to demonstrate documentation structure, developer-facing writing, and docs-as-code workflow.
+
+---
