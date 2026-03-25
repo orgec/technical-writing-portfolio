@@ -1,84 +1,68 @@
-## Python Integration Example
+# Contributing to This Documentation
 
-The following example shows how to trigger a scan, poll for completion, and retrieve findings using Python.
+This document outlines the standards and workflow used to maintain this documentation set. It is intended as a reference for contributors and reviewers.
 
-```python
-import time 
-import requests
+---
 
-API_KEY = "YOUR_API_KEY"
-BASE_URL = "https://api.example-security-platform.com/v1"
+## Documentation Structure
 
-headers = {
-    "Authorization": f"Bearer {API_KEY}",
-    "Content-Type": "application/json"
-}
-
-def start_scan(target: str, profile: str = "standard") -> str:
-    """Trigger a new scan and return the scan_id."""
-    response = requests.post(
-        f"{BASE_URL}/scans",
-        headers=headers,
-        json={"target": target, "profile": profile}
-    )
-    response.raise_for_status()
-    return response.json()["scan_id"]
-
-def wait_for_completion(scan_id: str, interval: int = 10, timeout: int = 300) -> dict:
-    """Poll scan status until completed or timeout is reached."""
-    elapsed = 0
-    while elapsed < timeout:
-        response = requests.get(f"{BASE_URL}/scans/{scan_id}", headers=headers)
-        response.raise_for_status()
-        data = response.json()
-
-        status = data["status"]
-        print(f"Status: {status} (elapsed: {elapsed}s)")
-
-        if status == "completed":
-            return data
-        if status == "failed":
-            raise RuntimeError(f"Scan {scan_id} failed.")
-
-        time.sleep(interval)
-        elapsed += interval
-
-    raise TimeoutError(f"Scan {scan_id} did not complete within {timeout} seconds.")
-
-def get_findings(scan_id: str, severity: str = None) -> list:
-    """Retrieve findings for a completed scan, optionally filtered by severity."""
-    params = {}
-    if severity:
-        params["severity"] = severity
-
-    response = requests.get(
-        f"{BASE_URL}/scans/{scan_id}/findings",
-        headers=headers,
-        params=params
-    )
-    response.raise_for_status()
-    return response.json()["findings"]
-
-# --- Main workflow ---
-
-scan_id = start_scan("https://example.com")
-print(f"Scan started: {scan_id}")
-
-wait_for_completion(scan_id)
-
-findings = get_findings(scan_id, severity="critical")
-print(f"\nCritical findings: {len(findings)}")
-for f in findings:
-    print(f"  [{f['severity'].upper()}] {f['title']}")
-    print(f"  → {f['recommendation']}\n")
+```
+technical-writing-portfolio/
+├── api-guide/
+│   ├── getting-started.md      # Quickstart for new developers
+│   ├── api-reference.md        # Full endpoint reference
+│   ├── integration-guide.md    # Workflow and automation patterns
+│   └── troubleshooting.md      # Common errors and fixes
+└── README.md
 ```
 
-### Notes
+Each file serves a distinct purpose and a distinct audience. Before adding content, confirm it belongs in the intended file, this will avoid duplicating information across documents.
 
-- Store `API_KEY` in an environment variable rather than hardcoding it:
-  ```python
-  import os
-  API_KEY = os.environ.get("SCAN_API_KEY")
-  ```
-- The `wait_for_completion` function uses simple polling. For production use, consider a webhook-based approach to avoid unnecessary requests (see Webhook-Based Workflow above).
-- `raise_for_status()` will raise an `HTTPError` for 4xx and 5xx responses. Wrap calls in `try/except` blocks for production error handling.
+---
+
+## Writing Standards
+
+### Voice and tone
+- Write in second person ("you", not "the user" or "one")
+- Use active voice wherever possible
+- Be direct — lead with what the reader needs to do, not with background context
+
+### Formatting
+- Use sentence case for headings (not Title Case)
+- Use backticks for all inline code, parameter names, endpoint paths, and status codes: `scan_id`, `POST /scans`, `401`
+- Use fenced code blocks with a language identifier: ` ```json `, ` ```python `, ` ```bash `
+- Use tables for structured reference content (parameters, error codes, status values)
+
+### Code examples
+- All examples must be functional or clearly annotated as illustrative
+- Use `YOUR_API_KEY` as the placeholder for authentication tokens
+- Use `https://example.com` as the placeholder target URL
+- Prefer `curl` for simple single-request examples; Python for multi-step workflows
+
+---
+
+## Contribution Workflow
+
+1. **Branch** — create a branch from `main` using the format `docs/short-description`
+2. **Write** — follow the writing standards above
+3. **Review** — self-review against the checklist below before opening a PR
+4. **PR** — open a pull request with a clear title and a one-line description of what changed and why
+
+---
+
+## Pre-PR Checklist
+
+- [ ] Content is accurate and consistent with existing docs
+- [ ] No information is duplicated across files
+- [ ] All code examples are syntactically correct
+- [ ] Tables are properly formatted and render correctly in GitHub preview
+- [ ] Links point to the correct files or anchors
+- [ ] No placeholder text left unresolved
+
+---
+
+## What Not to Include
+
+- Marketing language or feature promotion
+- Speculation about future functionality
+- Content that duplicates what is already covered in another file — link to it instead
