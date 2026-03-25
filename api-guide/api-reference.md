@@ -1,6 +1,6 @@
 # API Reference
 
-This document provides a complete reference for the Scan API endpoints.
+This document provides a structured reference for the Scan API endpoints, including request formats, parameters, and response structures. It is intended for developers who need precise technical details.
 
 ---
 
