@@ -3,7 +3,7 @@
 The following example shows how to trigger a scan, poll for completion, and retrieve findings using Python.
 
 ```python
-import time
+import time 
 import requests
 
 API_KEY = "YOUR_API_KEY"
