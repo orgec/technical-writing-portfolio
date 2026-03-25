@@ -66,6 +66,15 @@ Run a security scan on every deployment.
 
 ---
 
+## Webhook-Based Workflow (Advanced)
+
+Instead of polling for scan status, you can configure a webhook to receive updates when scan status changes.
+
+### Benefits
+- Reduces unnecessary API calls
+- Improves system efficiency
+- Enables real-time processing of results
+
 ## Security Considerations
 
 - Never expose sensitive endpoints publicly
