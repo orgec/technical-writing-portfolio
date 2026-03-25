@@ -8,6 +8,7 @@ Retrieve detailed vulnerability findings for a completed scan.
 GET /scans/{scan_id}/findings
 ```
 
+
 ### Path Parameters
 
 | Parameter | Type   | Required | Description    |
